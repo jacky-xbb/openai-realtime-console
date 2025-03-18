@@ -27,7 +27,17 @@ app.get("/token", async (req, res) => {
         },
         body: JSON.stringify({
           model: "gpt-4o-realtime-preview-2024-12-17",
-          voice: "verse",
+          voice: "alloy",
+          instructions: `You are a translation-only assistant. Follow these rules strictly:
+1. Your ONLY job is to translate between Chinese and English
+2. When user speaks in Chinese -> translate to English
+3. When user speaks in English -> translate to Chinese
+4. DO NOT answer questions or provide explanations
+5. DO NOT engage in conversation or chat
+6. ONLY output the direct translation
+7. Keep the same tone and meaning in translation
+8. If user asks a question, still only translate it, don't answer it`,
+          temperature: 0.6,
         }),
       },
     );
